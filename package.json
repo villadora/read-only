@@ -4,7 +4,7 @@
   "description": "read-only",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "./node_modules/.bin/mocha -R spec"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "keywords": [
     "read-only"
   ],
-  "engines": { 
+  "engines": {
     "node": ">=0.11.0"
   },
   "author": "villadora",
@@ -21,8 +21,10 @@
   "bugs": {
     "url": "https://github.com/villadora/read-only/issues"
   },
-  "devDependencies": {
-    "mocha": "*",
-    "chai": "*"
+  "devDependencies": {},
+  "dependencies": {
+    "chai": "^1.9.1",
+    "jshint": "^2.5.6",
+    "mocha": "^1.21.4"
   }
 }

@@ -1,6 +1,6 @@
-# read-only [![NPM version](https://badge.fury.io/js/read-only.svg)](http://badge.fury.io/js/read-only) [![Build Status](https://travis-ci.org/villadora/read-only.svg?branch=master)](https://travis-ci.org/villadora/read-only) [![Dependency Status](https://gemnasium.com/villadora/read-only.svg)](https://gemnasium.com/villadora/read-only)
+# read-only [![NPM version](https://badge.fury.io/js/read-only.svg)](http://badge.fury.io/js/read-only) [![Build Status](https://travis-ci.org/villadora/read-only.svg?branch=master)](https://travis-ci.org/villadora/read-only) 
 
-<!-- description -->
+Wrap an normal object to a read-only object, the same as its properties;
 
 ## Install
 
@@ -11,10 +11,25 @@ $ npm install read-only --save
 ## Usage
 
 ```js
-var read_only = require('read-only');
+var readonly = require('read-only');
+
+var ro = readonly({a: 1, b: { c: 'h'}});
+
+ro.a = 2;  // no change
+consoe.log(ro.a); // 1
+
+(function() {
+   "use strict";
+   ro.a = 2; // exception
+})();
+
+
+var b = ro.b;
+b.c = 'r'; // no change
+
 ```
 
 ## Licence
 
 MIT
-<!-- do not want to make nodeinit to complicated, you can edit this whenever you want. -->
+
