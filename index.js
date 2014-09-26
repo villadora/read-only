@@ -9,7 +9,16 @@ function readonly(obj, options) {
   function defineReadOnlyProperty(target, obj, key) {
     var val = obj[key];
     Object.defineProperty(target, key, {
-      value: typeof val == 'object' ? (options.nested ? readonly(val): val) : val,
+      value: (function() {
+        if (Array.isArray(val)) {
+          return val.map(function(v) {
+            return typeof v == 'object' ? readonly(v, options) : v;
+          });
+        }else if (typeof val == 'object') {
+          return options.nested ? readonly(val): val;
+        } else
+          return val;
+      })(),
       enumerable: true,
       writable: false
     });
